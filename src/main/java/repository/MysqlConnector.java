@@ -17,7 +17,8 @@ public class MysqlConnector {
         }
     }
 
-    public ResultSet insertData(Charger charger) throws SQLException {
+    public String insertData(Charger charger) {
+        try {
         String sql = " INSERT INTO  `online-shop`.charger"
                 + " VALUES(?,?,?,?)"
                 + "set color=" + charger.getColor()
@@ -34,7 +35,9 @@ public class MysqlConnector {
         } else {
             System.out.println("insert have error");
         }
-
+    }catch (SQLException sqlException){
+            return "we have an error";
+        }
         return null;
     }
 
@@ -69,11 +72,17 @@ public class MysqlConnector {
             return "eror is occured";
         }
     }
-    public ResultSet selectData(String table, int id) throws SQLException {
-        String sqlSelectAllPersons = "SELECT * FROM `online-shop`." + table + " WHERE id= " + id;
-        PreparedStatement ps = connection.prepareStatement(sqlSelectAllPersons);
-        return ps.executeQuery(sqlSelectAllPersons);
+    public Object selectData(String table, int id) {
+        try {
+
+            String sqlSelectAllPersons = "SELECT * FROM `online-shop`." + table + " WHERE id= " + id;
+            PreparedStatement ps = connection.prepareStatement(sqlSelectAllPersons);
+            return ps.executeQuery(sqlSelectAllPersons);
+        }catch (SQLException sqlException){
+            return "error is occured";
+        }
     }
+
 
 
 }

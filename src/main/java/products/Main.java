@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args)  {
         MysqlConnector mysqlConnector=new MysqlConnector();
        mysqlConnector.insertData(new Charger("blue","apple",2023));
-        ResultSet resultSet = mysqlConnector.selectData("person",2);
+        ResultSet resultSet = (ResultSet) mysqlConnector.selectData("person",2);
         Case caseModel = new Case(1,14, "234", 234);
         mysqlConnector.updateCase(caseModel);
         String aCase = mysqlConnector.deleteData("case", 4);
