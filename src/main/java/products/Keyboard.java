@@ -5,8 +5,8 @@ public class Keyboard extends Attributes{
     protected int numberOfButtons;
 
 
-    public Keyboard(String color, String brand, int productYear, int numberOfButtons) {
-        super(color, brand, productYear);
+    public Keyboard( String color, String brand, int productYear) {
+        super (color, brand, productYear);
         this.numberOfButtons = numberOfButtons;
     }
 

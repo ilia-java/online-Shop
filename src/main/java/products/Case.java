@@ -3,10 +3,10 @@ package products;
 public class Case {
     private int id;
     private int size;
-    private String processNumber;
-    private int graficModel;
+    private int processNumber;
+    private String graficModel;
 
-    public Case(int id, int size, String processNumber, int graficModel) {
+    public Case(int id, int size, int processNumber, String graficModel) {
         this.id = id;
         this.size = size;
         this.processNumber = processNumber;
@@ -21,20 +21,21 @@ public class Case {
         return size;
     }
 
-    public String getProcessNumber() {
+    public int getProcessNumber() {
         return processNumber;
     }
 
-    public int getGraficModel() {
+    public String getGraficModel() {
         return graficModel;
     }
 
     @Override
     public String toString() {
         return "Case{" +
-                "size=" + size +
-                ", graficModel='" + graficModel + '\'' +
+                "id=" + id +
+                ", size=" + size +
                 ", processNumber=" + processNumber +
+                ", graficModel='" + graficModel + '\'' +
                 '}';
     }
 }
