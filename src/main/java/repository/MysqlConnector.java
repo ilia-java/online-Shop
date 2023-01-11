@@ -16,47 +16,42 @@ public class MysqlConnector {
             throw new RuntimeException(e.getMessage());
         }
     }
-//
-//    public String insertData(Charger charger) {
-//        try {
-//        String sql = " INSERT INTO  `online-shop`.charger"
-//                + " values(?,?,?,?)"
-//                +  " set id "  +  charger.getId()
-//                +  " set color "  +  charger.getColor()
-//                +  " set brand "  +  charger.getBrand()
-//                +  " set productYear "  +  charger.getProductYear();
-//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//        preparedStatement.setString(1, "id");
-//        preparedStatement.setString(2, "color");
-//        preparedStatement.setString(3, "brand");
-//        preparedStatement.setString(4, "productYear");
-//        boolean execute = preparedStatement.execute();
-//        if (execute) {
-//            System.out.println("insert complicated");
-//        } else {
-//            System.out.println("insert have error");
-//        }
-//    }
-//        catch (SQLException e){
-//            System.out.println(e.getMessage());
-//        }
-//        return null;
-//    }
+
+    public String insertData(Charger charger) {
+        try {
+        String sql = "INSERT INTO `online-shop`.charger (id, color, brand, productYear) VALUES(?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, charger.getId());
+        preparedStatement.setString(2, charger.getColor());
+        preparedStatement.setString(3, charger.getBrand());
+        preparedStatement.setInt(4, charger.getProductYear());
+        boolean execute = preparedStatement.execute();
+        if (execute) {
+            System.out.println("insert complicated");
+        } else {
+            System.out.println("insert have error");
+        }
+    }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
 
-//    public void updateCase(Case caseModel)  {
-//        try {
-//            Statement smt = connection.createStatement();
-//            String updatedate = "update `online-shop`.case "
-//                    + " set size=" + caseModel.getSize()
-//                    + " set processNumber=" + caseModel.getProcessNumber()
-//                    + " set graficModel=" + caseModel.getGraficModel()
-//                    + "where id=" + caseModel.getId();
-//            smt.executeUpdate(updatedate);
-//        } catch (SQLException sql){
-//            System.out.println(sql.getMessage());
-//        }
-//      }
+    public void updateCase(Case caseModel)  {
+        try {
+            Statement smt = connection.createStatement();
+            String updatedate = "UPDATE `online-shop`.case"
+                    + " SET size=" + caseModel.getSize()
+                    + " , processNumber=" + caseModel.getProcessNumber()
+                    + " , graficModel=" + caseModel.getGraficModel()
+                    + " WHERE id=" + caseModel.getId();
+            smt.executeUpdate(updatedate);
+        } catch (SQLException sql){
+            System.out.println(sql.getMessage());
+        }
+      }
 
 
     public String deleteData(String table, int id) {
@@ -83,7 +78,4 @@ public class MysqlConnector {
             return null;
         }
     }
-
-
-
 }

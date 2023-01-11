@@ -8,14 +8,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)  {
         MysqlConnector mysqlConnector=new MysqlConnector();
-       // mysqlConnector.insertData(new Charger(3,"yellow","lenovo",1999));
-//        Case caseModel = new  Case(2,14, 43, "new");
-//        mysqlConnector.updateCase(caseModel);
-
+        mysqlConnector.insertData(new Charger(3,"yellow","lenovo",1999));
+        Case caseModel = new  Case(2,14, 43, "new");
+        mysqlConnector.updateCase(caseModel);
 
         ResultSet resultSet =  mysqlConnector.selectData("person",3);
-        System.out.println(resultSet);
-
 
         String aCase = mysqlConnector.deleteData("case", 1);
 
@@ -36,7 +33,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Integer choice = scanner.nextInt();
 
-        // use switch case
         switch (choice) {
             case 1:
                 Case hp = new Case(1, 7, 89, "old");
